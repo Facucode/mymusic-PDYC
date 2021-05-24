@@ -1,6 +1,7 @@
 package ar.edu.unnoba.pdyc.mymusic.service;
 
 
+import ar.edu.unnoba.pdyc.mymusic.model.Genre;
 import ar.edu.unnoba.pdyc.mymusic.model.Song;
 import ar.edu.unnoba.pdyc.mymusic.repository.SongRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,6 +13,9 @@ import java.util.List;
 public class SongServiceImp implements SongService{
     @Autowired
     private SongRepository songRepository;
+
     @Override
-    public List<Song> getSongs() { return songRepository.findAll();}
+    public List<Song> getSongs(String author, Genre genre) {
+        return songRepository.findByAuthorAndGenre(author, genre);
+    }
 }

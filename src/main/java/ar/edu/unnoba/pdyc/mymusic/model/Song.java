@@ -9,10 +9,9 @@ public class Song {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     private String name;
-
     private String author;
+    private Genre genre;
 
     public Long getId() {
         return id;
@@ -36,5 +35,13 @@ public class Song {
 
     public void setAuthor(String author) {
         this.author = author;
+    }
+
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 }

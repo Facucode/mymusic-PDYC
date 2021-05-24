@@ -1,18 +1,23 @@
 package ar.edu.unnoba.pdyc.mymusic.model;
 
 
-import javax.persistence.Entity;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Table(name="playlists")
 public class Playlist {
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
     private String name;
     @ManyToOne
     @JoinColumn(name = "user_id")
     private User owner;
+
+    @ManyToMany
+    @JoinTable(name = "playlists_songs",inverseJoinColumns = @JoinColumn(name = "song_id"))
+    private List<Song> songs;
 
     public String getName() {
         return name;
